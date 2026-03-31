@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mindsalon — Where Conversation Transforms</title>
+  <meta name="description" content="Mindsalon by Karolina Broskova — intimate intellectual gatherings and transformative 1:1 coaching in Madrid. Where conversation transforms." />
+  <meta property="og:title" content="Mindsalon — Where Conversation Transforms" />
+  <meta property="og:description" content="Intimate salon gatherings and human-centric coaching with Karolina Broskova in Madrid." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --ivory:       #faf8f3;
+      --parchment:   #f0ebe0;
+      --night:       #191926;
+      --night-mid:   #24243a;
+      --gold:        #b8936a;
+      --gold-light:  #d4b896;
+      --sand:        #ddd0bc;
+      --text:        #282420;
+      --text-mid:    #5a5550;
+      --text-light:  #9a9490;
+      --white:       #ffffff;
+      --border:      rgba(184,147,106,0.25);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      background: var(--ivory);
+      color: var(--text);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--gold-light); color: var(--night); }
+
+    /* ─── Typography ────────────────────────────────────── */
+    h1, h2, h3, h4, blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .serif-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+    /* ─── Utilities ─────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container--narrow { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 6rem 0; }
+    .section--lg { padding: 8rem 0; }
+    .gold-line {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+    .gold-line--left { margin-left: 0; }
+    .tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border: 1px solid currentColor;
+      transition: all 0.35s ease;
+      cursor: pointer;
+      background: transparent;
+    }
+    .btn--light {
+      color: var(--ivory);
+      border-color: rgba(250,248,243,0.5);
+    }
+    .btn--light:hover {
+      background: var(--ivory);
+      color: var(--night);
+      border-color: var(--ivory);
+    }
+    .btn--dark {
+      color: var(--night);
+      border-color: rgba(40,36,32,0.4);
+    }
+    .btn--dark:hover {
+      background: var(--night);
+      color: var(--ivory);
+      border-color: var(--night);
+    }
+    .btn--gold {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .btn--gold:hover {
+      background: var(--gold);
+      color: var(--ivory);
+    }
+
+    /* ─── Navigation ────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(25,25,38,0.97);
+      padding: 1rem 2.5rem;
+      box-shadow: 0 1px 0 rgba(184,147,106,0.2);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--ivory);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.75);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta { margin-left: 1rem; }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--ivory);
+      transition: all 0.3s ease;
+    }
+
+    /* ─── Hero ──────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--night);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 2rem 6rem;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 120%, rgba(184,147,106,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(184,147,106,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-ornament {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border: 1px solid rgba(184,147,106,0.1);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-ornament::before {
+      content: '';
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(184,147,106,0.06);
+      border-radius: 50%;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      font-weight: 300;
+      color: var(--ivory);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+    .hero-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+      opacity: 0.6;
+    }
+    .hero-sub {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(250,248,243,0.55);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.4;
+      animation: bob 2.5s ease-in-out infinite;
+    }
+    .scroll-hint span {
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ivory);
+    }
+    .scroll-hint svg { color: var(--gold); }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── Manifesto ─────────────────────────────────────── */
+    #manifesto {
+      background: var(--parchment);
+      padding: 7rem 0;
+      text-align: center;
+    }
+    .manifesto-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--text);
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .manifesto-text em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ─── About ─────────────────────────────────────────── */
+    #about { background: var(--ivory); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-frame {
+      aspect-ratio: 3/4;
+      background: var(--night-mid);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-image-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(184,147,106,0.3);
+      pointer-events: none;
+    }
+    .about-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(250,248,243,0.2);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .about-image-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 80%;
+      height: 80%;
+      border: 1px solid var(--gold);
+      opacity: 0.2;
+      z-index: -1;
+    }
+    .about-content { padding-right: 1rem; }
+    .about-content h2 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--night);
+      margin-bottom: 1.5rem;
+    }
+    .about-content p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+      line-height: 1.85;
+    }
+    .about-content p:last-of-type { margin-bottom: 2rem; }
+
+    /* ─── The Salon ─────────────────────────────────────── */
+    #salon {
+      background: var(--night);
+      color: var(--ivory);
+    }
+    .salon-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .salon-header { text-align: center; margin-bottom: 5rem; }
+    .salon-header h2 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      color: var(--ivory);
+      margin-bottom: 1.5rem;
+    }
+    .salon-header p {
+      font-size: 0.9rem;
+      color: rgba(250,248,243,0.6);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.85;
+    }
+    .salon-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 5rem;
+    }
+    .salon-feature {
+      background: rgba(250,248,243,0.03);
+      border: 1px solid rgba(184,147,106,0.12);
+      padding: 2.5rem;
+      transition: background 0.3s ease;
+    }
+    .salon-feature:hover { background: rgba(184,147,106,0.06); }
+    .salon-feature-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(184,147,106,0.25);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .salon-feature h3 {
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+    }
+    .salon-feature p {
+      font-size: 0.82rem;
+      color: rgba(250,248,243,0.55);
+      line-height: 1.85;
+    }
+    .salon-quote {
+      border-top: 1px solid rgba(184,147,106,0.2);
+      border-bottom: 1px solid rgba(184,147,106,0.2);
+      padding: 3.5rem 0;
+      text-align: center;
+    }
+    .salon-quote blockquote {
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-style: italic;
+      color: var(--gold-light);
+      max-width: 700px;
+      margin: 0 auto 1rem;
+      font-weight: 300;
+    }
+    .salon-quote cite {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.35);
+      font-style: normal;
+    }
+
+    /* ─── Coaching ──────────────────────────────────────── */
+    #coaching { background: var(--ivory); }
+    .coaching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .coaching-text h2 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--night);
+      margin-bottom: 1.5rem;
+    }
+    .coaching-text p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+      line-height: 1.85;
+    }
+    .coaching-text p:last-of-type { margin-bottom: 2rem; }
+    .coaching-offerings { display: flex; flex-direction: column; gap: 1px; }
+    .coaching-offer {
+      border: 1px solid var(--border);
+      padding: 2rem;
+      transition: border-color 0.3s ease;
+      background: var(--ivory);
+    }
+    .coaching-offer:hover { border-color: var(--gold); }
+    .coaching-offer h3 {
+      font-size: 1.25rem;
+      color: var(--night);
+      margin-bottom: 0.5rem;
+    }
+    .coaching-offer p {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+    .coaching-offer-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ─── Areas of Interest ─────────────────────────────── */
+    #areas { background: var(--parchment); }
+    .areas-header { text-align: center; margin-bottom: 4rem; }
+    .areas-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--night);
+      margin-bottom: 1rem;
+    }
+    .areas-header p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.85;
+    }
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .area-card {
+      background: var(--ivory);
+      border: 1px solid rgba(184,147,106,0.15);
+      padding: 2rem 1.75rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: default;
+    }
+    .area-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(25,25,38,0.08);
+      border-color: var(--gold);
+    }
+    .area-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: rgba(184,147,106,0.3);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .area-card h3 {
+      font-size: 1.1rem;
+      color: var(--night);
+      margin-bottom: 0.6rem;
+    }
+    .area-card p {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    /* ─── Process ───────────────────────────────────────── */
+    #process {
+      background: var(--night);
+      color: var(--ivory);
+      text-align: center;
+    }
+    .process-header { margin-bottom: 4.5rem; }
+    .process-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+    .process-header p {
+      font-size: 0.85rem;
+      color: rgba(250,248,243,0.5);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2.2rem;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184,147,106,0.3), transparent);
+    }
+    .process-step { padding: 0 1.5rem; }
+    .step-circle {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(184,147,106,0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      position: relative;
+      background: var(--night);
+    }
+    .process-step h3 {
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+    }
+    .process-step p {
+      font-size: 0.78rem;
+      color: rgba(250,248,243,0.5);
+      line-height: 1.85;
+    }
+
+    /* ─── Pull Quote ─────────────────────────────────────── */
+    #pullquote {
+      background: var(--parchment);
+      padding: 7rem 0;
+      text-align: center;
+    }
+    .pullquote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--night);
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.4;
+    }
+    .pullquote-source {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ─── Contact / Join ─────────────────────────────────── */
+    #contact {
+      background: var(--night);
+      color: var(--ivory);
+      text-align: center;
+    }
+    .contact-inner { max-width: 680px; margin: 0 auto; padding: 0 2rem; }
+    #contact h2 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+    #contact .serif-italic {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 2.5rem;
+    }
+    #contact p {
+      font-size: 0.85rem;
+      color: rgba(250,248,243,0.55);
+      margin-bottom: 3rem;
+      line-height: 1.85;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.4);
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: rgba(250,248,243,0.05);
+      border: 1px solid rgba(184,147,106,0.2);
+      padding: 0.85rem 1rem;
+      color: var(--ivory);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s ease;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: rgba(184,147,106,0.6);
+    }
+    .form-field select option { background: var(--night); }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+    }
+    .form-note {
+      text-align: center;
+      font-size: 0.68rem;
+      color: rgba(250,248,243,0.3);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    footer {
+      background: var(--night);
+      border-top: 1px solid rgba(184,147,106,0.15);
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: rgba(250,248,243,0.6);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.35);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-copy {
+      font-size: 0.62rem;
+      color: rgba(250,248,243,0.2);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── Divider ornament ──────────────────────────────── */
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 auto 3.5rem;
+      justify-content: center;
+    }
+    .ornament-divider::before,
+    .ornament-divider::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.35;
+    }
+    .ornament-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.5;
+    }
+
+    /* ─── Fade-in Animation ─────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── Responsive ────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image-wrap { order: -1; max-width: 380px; margin: 0 auto; }
+      .coaching-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .areas-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+      .process-steps::before { display: none; }
+      .salon-features { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .section, .section--lg { padding: 4.5rem 0; }
+      nav { padding: 1.25rem 1.25rem; }
+      nav.scrolled { padding: 0.85rem 1.25rem; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: rgba(25,25,38,0.98);
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        z-index: 99;
+      }
+      .nav-links.open a { font-size: 1.2rem; }
+      .nav-toggle { display: flex; z-index: 101; }
+      .areas-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+      .salon-features { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .hero-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────── -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo">Mindsalon</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#salon">The Salon</a></li>
+      <li><a href="#coaching">Coaching</a></li>
+      <li><a href="#areas">Themes</a></li>
+      <li><a href="#contact" class="btn btn--gold nav-cta">Join</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── Hero ────────────────────────────────────────────── -->
+  <section id="hero" role="banner">
+    <div class="hero-bg"></div>
+    <div class="hero-ornament" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Madrid · Est. 2024</p>
+      <h1 class="hero-title">Mindsalon</h1>
+      <p class="hero-tagline">Where conversation transforms</p>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-sub">Intimate gatherings &nbsp;·&nbsp; Human-centric coaching</p>
+      <div class="hero-actions">
+        <a href="#salon" class="btn btn--light">Discover the Salon</a>
+        <a href="#coaching" class="btn btn--gold">Work with Karolina</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <svg width="12" height="18" viewBox="0 0 12 18" fill="none">
+        <path d="M6 1v16M1 12l5 5 5-5" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ─── Manifesto ────────────────────────────────────────── -->
+  <section id="manifesto" aria-label="Philosophy">
+    <div class="container--narrow">
+      <div class="ornament-divider" aria-hidden="true"><div class="ornament-diamond"></div></div>
+      <p class="manifesto-text reveal">
+        In a world saturated with noise and shallow exchange, there is a quiet hunger
+        for something <em>real</em> — a space where ideas breathe, where your voice matters,
+        and where genuine human connection still happens. Mindsalon is that space.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── About ────────────────────────────────────────────── -->
+  <section id="about" class="section--lg">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap reveal">
+          <div class="about-image-frame">
+            <div class="about-image-placeholder">
+              <!-- Replace with your photo: <img src="images/karolina.jpg" alt="Karolina Broskova" style="width:100%;height:100%;object-fit:cover;"> -->
+              <span>Photo of Karolina</span>
+            </div>
+          </div>
+          <div class="about-image-accent" aria-hidden="true"></div>
+        </div>
+        <div class="about-content reveal reveal-delay-1">
+          <span class="tag">About</span>
+          <span class="gold-line gold-line--left" aria-hidden="true"></span>
+          <h2>Hello, I'm Karolina</h2>
+          <p>
+            I am a facilitator of meaningful dialogue, a coach, and the host of Mindsalon —
+            a series of intimate intellectual gatherings rooted in the great French salon tradition
+            of the 17th century, reimagined for our time.
+          </p>
+          <p>
+            Based in Madrid, I work with curious, thoughtful people who are seeking more than
+            surface-level connection. Whether through a carefully curated salon gathering or a
+            dedicated coaching journey, my work is guided by a single conviction: that the quality
+            of our conversations determines the quality of our lives.
+          </p>
+          <p>
+            I hold space for the conversations that matter — about identity, meaning, relationship,
+            creativity, and the art of living fully and authentically.
+          </p>
+          <a href="#contact" class="btn btn--dark">Begin the Conversation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── The Salon ─────────────────────────────────────────── -->
+  <section id="salon" class="section--lg">
+    <div class="salon-inner">
+      <div class="salon-header reveal">
+        <span class="tag">The Salon</span>
+        <span class="gold-line" aria-hidden="true"></span>
+        <h2>Intimate Gatherings.<br/>Lasting Connections.</h2>
+        <p>
+          Monthly salon evenings in private homes in Madrid — a living revival of one of
+          history's most generative social institutions. Up to six carefully invited guests.
+          One pre-selected theme. Moderated dialogue. Real encounter.
+        </p>
+      </div>
+
+      <div class="salon-features">
+        <div class="salon-feature reveal">
+          <div class="salon-feature-num">01</div>
+          <h3>Curated Intimacy</h3>
+          <p>
+            Each salon welcomes no more than six participants — an intentional constraint
+            that creates genuine depth, ensures every voice is heard, and allows true
+            intellectual and emotional presence.
+          </p>
+        </div>
+        <div class="salon-feature reveal reveal-delay-1">
+          <div class="salon-feature-num">02</div>
+          <h3>Guided Dialogue</h3>
+          <p>
+            Every gathering is anchored by a pre-selected theme — from philosophy and
+            identity to creativity and the future of human connection — explored through
+            thoughtful, facilitated conversation.
+          </p>
+        </div>
+        <div class="salon-feature reveal reveal-delay-2">
+          <div class="salon-feature-num">03</div>
+          <h3>Private &amp; Personal</h3>
+          <p>
+            Held in the warmth of private homes, not institutional spaces. The domestic
+            setting is deliberate — it signals trust, lowers defenses, and invites the
+            kind of openness that public venues rarely allow.
+          </p>
+        </div>
+        <div class="salon-feature reveal">
+          <div class="salon-feature-num">04</div>
+          <h3>Cross-Disciplinary</h3>
+          <p>
+            Guests come from varied generations, nationalities, and professions. The salon
+            thrives on this diversity — artists sit beside engineers, philosophers beside
+            entrepreneurs, seekers beside sceptics.
+          </p>
+        </div>
+        <div class="salon-feature reveal reveal-delay-1">
+          <div class="salon-feature-num">05</div>
+          <h3>Monthly Rhythm</h3>
+          <p>
+            Consistency matters. Returning guests build on previous encounters; new guests
+            bring fresh energy. The monthly cadence creates a living, evolving intellectual
+            community in Madrid.
+          </p>
+        </div>
+        <div class="salon-feature reveal reveal-delay-2">
+          <div class="salon-feature-num">06</div>
+          <h3>In English &amp; Spanish</h3>
+          <p>
+            Sessions are currently held in English, with Spanish-language salons coming
+            soon — reflecting Madrid's vibrant international character and the universal
+            human need to be truly heard in one's own language.
+          </p>
+        </div>
+      </div>
+
+      <div class="salon-quote reveal">
+        <blockquote>
+          "A salon is like a deep-tissue massage for the mind — it works out
+          the knots that ordinary life leaves behind."
+        </blockquote>
+        <cite>— Karolina Broskova</cite>
+      </div>
+
+      <div style="text-align:center; margin-top: 3rem;">
+        <a href="#contact" class="btn btn--light">Request an Invitation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Coaching ──────────────────────────────────────────── -->
+  <section id="coaching" class="section--lg">
+    <div class="container">
+      <div class="coaching-grid">
+        <div class="coaching-text reveal">
+          <span class="tag">Coaching</span>
+          <span class="gold-line gold-line--left" aria-hidden="true"></span>
+          <h2>Transformative<br/>1:1 Coaching</h2>
+          <p>
+            My coaching practice is grounded in the same philosophy as the salon:
+            that the right conversation, held in the right conditions, can change
+            everything. I work with individuals at genuine inflection points —
+            people who sense that something important needs to shift but aren't
+            yet sure what, or how.
+          </p>
+          <p>
+            My approach is human-centric, inquiry-led, and deeply respectful of your
+            own wisdom. I don't provide answers; I ask the questions that help you
+            find your own — and hold space for the answers that truly belong to you.
+          </p>
+          <p>
+            Sessions are conducted in English and Czech, in person in Madrid
+            or online worldwide.
+          </p>
+          <a href="#contact" class="btn btn--dark" style="margin-top:0.5rem;">Explore Coaching</a>
+        </div>
+        <div class="coaching-offerings reveal reveal-delay-1">
+          <div class="coaching-offer">
+            <span class="coaching-offer-tag">Discovery</span>
+            <h3>Single Session</h3>
+            <p>
+              A focused 90-minute conversation to clarify a specific challenge, decision,
+              or question. Ideal for those new to coaching or seeking a meaningful
+              one-time conversation.
+            </p>
+          </div>
+          <div class="coaching-offer">
+            <span class="coaching-offer-tag">Deep Work</span>
+            <h3>Coaching Journey</h3>
+            <p>
+              A structured series of 6–12 sessions over three to six months. Together we
+              work through a theme that matters deeply to you, building real clarity,
+              capacity, and change over time.
+            </p>
+          </div>
+          <div class="coaching-offer">
+            <span class="coaching-offer-tag">Collective</span>
+            <h3>Group Coaching</h3>
+            <p>
+              Small-group coaching in the spirit of the salon — combining the intimacy
+              of individual attention with the generative power of shared reflection
+              and peer wisdom.
+            </p>
+          </div>
+          <div class="coaching-offer">
+            <span class="coaching-offer-tag">Organisations</span>
+            <h3>Facilitation &amp; Workshops</h3>
+            <p>
+              Bespoke facilitation and conversation design for teams and organisations
+              that want to build cultures of genuine dialogue, psychological safety,
+              and meaningful connection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Areas of Interest ─────────────────────────────────── -->
+  <section id="areas" class="section--lg">
+    <div class="container">
+      <div class="areas-header reveal">
+        <span class="tag">Themes &amp; Topics</span>
+        <span class="gold-line" aria-hidden="true"></span>
+        <h2>Areas of Exploration</h2>
+        <p>
+          The questions that animate both the salon and the coaching room — chosen not
+          because they are easy, but because they are essential.
+        </p>
+      </div>
+      <div class="areas-grid">
+        <div class="area-card reveal">
+          <div class="area-num">01</div>
+          <h3>Identity &amp; Self-Discovery</h3>
+          <p>Who are you beneath the roles, expectations, and stories you've inherited? What becomes possible when you meet yourself honestly?</p>
+        </div>
+        <div class="area-card reveal reveal-delay-1">
+          <div class="area-num">02</div>
+          <h3>Relationships &amp; Intimacy</h3>
+          <p>How do we build depth, trust, and real connection — in love, friendship, and professional life — in an age of distraction?</p>
+        </div>
+        <div class="area-card reveal reveal-delay-2">
+          <div class="area-num">03</div>
+          <h3>Meaning &amp; Purpose</h3>
+          <p>What gives your life weight and direction? How do we live with intention rather than just by default?</p>
+        </div>
+        <div class="area-card reveal reveal-delay-3">
+          <div class="area-num">04</div>
+          <h3>Creativity &amp; Expression</h3>
+          <p>Where does your creativity live, and what is keeping it quiet? Exploring the relationship between expression, courage, and identity.</p>
+        </div>
+        <div class="area-card reveal">
+          <div class="area-num">05</div>
+          <h3>Life Transitions</h3>
+          <p>The crossroads between who you have been and who you are becoming. How to navigate change with clarity, courage, and grace.</p>
+        </div>
+        <div class="area-card reveal reveal-delay-1">
+          <div class="area-num">06</div>
+          <h3>Communication &amp; Presence</h3>
+          <p>The art of being truly heard — and truly listening. How we speak, how we silence, and what we make possible when we do both well.</p>
+        </div>
+        <div class="area-card reveal reveal-delay-2">
+          <div class="area-num">07</div>
+          <h3>Human Connection</h3>
+          <p>Belonging, loneliness, and the paradox of our hyperconnected yet isolated age. What does it take to truly meet another person?</p>
+        </div>
+        <div class="area-card reveal reveal-delay-3">
+          <div class="area-num">08</div>
+          <h3>Inner Dialogue &amp; Mindset</h3>
+          <p>The stories we tell ourselves — about capability, worth, and possibility. Examining and rewriting the narratives that shape our lives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Process ───────────────────────────────────────────── -->
+  <section id="process" class="section--lg">
+    <div class="container">
+      <div class="process-header reveal">
+        <span class="tag">How It Works</span>
+        <span class="gold-line" style="margin:1.5rem auto;" aria-hidden="true"></span>
+        <h2>The Path to Your First Gathering</h2>
+        <p>Simple, unhurried, and deeply personal from the very first exchange.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-circle">I</div>
+          <h3>Reach Out</h3>
+          <p>Send a brief note through the form below — tell me a little about yourself and what draws you here.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-circle">II</div>
+          <h3>Introductory Call</h3>
+          <p>A short conversation to understand what you are seeking and whether the salon or coaching is the right fit for you.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-circle">III</div>
+          <h3>Your Invitation</h3>
+          <p>For the salon: you receive a personal invitation to an upcoming gathering matched to your interests and schedule.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-circle">IV</div>
+          <h3>The Conversation</h3>
+          <p>You arrive. You meet. You talk. And something shifts — quietly, inevitably, as it always does when real conversation happens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Pull Quote ─────────────────────────────────────────── -->
+  <section id="pullquote" aria-label="Guiding philosophy">
+    <div class="container--narrow" style="text-align:center;">
+      <div class="ornament-divider" aria-hidden="true"><div class="ornament-diamond"></div></div>
+      <p class="pullquote-text reveal">
+        "The quality of our conversations is the quality of our lives."
+      </p>
+      <span class="pullquote-source reveal reveal-delay-1">The Mindsalon Philosophy</span>
+    </div>
+  </section>
+
+  <!-- ─── Contact ───────────────────────────────────────────── -->
+  <section id="contact" class="section--lg">
+    <div class="contact-inner">
+      <span class="tag" style="color:var(--gold);">Get in Touch</span>
+      <span class="gold-line" aria-hidden="true"></span>
+      <h2 class="reveal">Begin Here</h2>
+      <span class="serif-italic reveal reveal-delay-1">Every meaningful encounter starts with a single conversation</span>
+      <p class="reveal reveal-delay-2">
+        Whether you're curious about attending a salon, exploring coaching, or simply
+        want to know more — I'd love to hear from you. Fill in the form and I will
+        personally be in touch within a few days.
+      </p>
+      <form class="contact-form reveal reveal-delay-2" name="contact" method="POST" action="mailto:hello@mindsalon.com" enctype="text/plain">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Full name" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="interest">I am interested in</label>
+          <select id="interest" name="interest">
+            <option value="">— Please select —</option>
+            <option value="salon">Attending a Salon</option>
+            <option value="coaching-single">Single Coaching Session</option>
+            <option value="coaching-journey">Coaching Journey (6–12 sessions)</option>
+            <option value="group">Group Coaching</option>
+            <option value="facilitation">Facilitation / Workshops</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">What brings you here?</label>
+          <textarea id="message" name="message" placeholder="A few words about what you are seeking or what draws you to Mindsalon…"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn--gold">Send My Note &rarr;</button>
+        </div>
+        <p class="form-note">Your message goes directly to Karolina. No automated responses.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#hero" class="footer-logo">Mindsalon</a>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#salon">The Salon</a></li>
+        <li><a href="#coaching">Coaching</a></li>
+        <li><a href="#areas">Themes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Mindsalon · Madrid</span>
+    </div>
+  </footer>
+
+  <!-- ─── JavaScript ────────────────────────────────────────── -->
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Mobile menu
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
