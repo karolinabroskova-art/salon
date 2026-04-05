@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I Got Here — Karolina Broskova · Mindsalon</title>
+  <meta name="description" content="The story behind Mindsalon — how Karolina Broskova came to believe in the transformative power of conversation, and why she brought the salon tradition to Madrid." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100%; }
+
+    :root {
+      --ivory:       #faf8f3;
+      --parchment:   #f0ebe0;
+      --night:       #191926;
+      --night-mid:   #24243a;
+      --gold:        #b8936a;
+      --gold-light:  #d4b896;
+      --sand:        #ddd0bc;
+      --text:        #282420;
+      --text-mid:    #5a5550;
+      --text-light:  #9a9490;
+      --border:      rgba(184,147,106,0.25);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      background: var(--ivory);
+      color: var(--text);
+      line-height: 1.75;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    ::selection { background: var(--gold-light); color: var(--night); }
+
+    h1, h2, h3, h4, blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    /* ─── Utilities ─────────────────────────────────────── */
+    .container        { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container--narrow { max-width: 720px;  margin: 0 auto; padding: 0 2rem; }
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .gold-line {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0;
+    }
+    .gold-line--center { margin: 1.5rem auto; }
+    .btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border: 1px solid currentColor;
+      transition: all 0.35s ease;
+      cursor: pointer;
+      background: transparent;
+    }
+    .btn--dark  { color: var(--night); border-color: rgba(40,36,32,0.4); }
+    .btn--dark:hover  { background: var(--night); color: var(--ivory); border-color: var(--night); }
+    .btn--light { color: var(--ivory); border-color: rgba(250,248,243,0.5); }
+    .btn--light:hover { background: var(--ivory); color: var(--night); }
+    .btn--gold  { color: var(--gold);  border-color: var(--gold); }
+    .btn--gold:hover  { background: var(--gold); color: var(--ivory); }
+
+    /* ─── Navigation ────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(25,25,38,0.97);
+      box-shadow: 0 1px 0 rgba(184,147,106,0.2);
+      transition: padding 0.4s ease;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      color: var(--ivory);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.75);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span { display: block; width: 24px; height: 1px; background: var(--ivory); }
+
+    /* ─── Page Header ───────────────────────────────────── */
+    .page-header {
+      background: var(--night);
+      padding: 10rem 2rem 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(184,147,106,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-header-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.4);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color 0.3s ease;
+    }
+    .page-header-back:hover { color: var(--gold-light); }
+    .page-header-back svg { transition: transform 0.3s ease; }
+    .page-header-back:hover svg { transform: translateX(-3px); }
+    .page-header h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: var(--ivory);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .page-header-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-style: italic;
+      color: var(--gold-light);
+      font-weight: 300;
+    }
+
+    /* ─── Intro ─────────────────────────────────────────── */
+    .intro {
+      background: var(--parchment);
+      padding: 6rem 0;
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .intro-image-wrap { position: relative; }
+    .intro-image-frame {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      position: relative;
+    }
+    .intro-image-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(184,147,106,0.3);
+      pointer-events: none;
+    }
+    .intro-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .intro-image-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 80%;
+      height: 80%;
+      border: 1px solid var(--gold);
+      opacity: 0.2;
+      z-index: -1;
+    }
+    .intro-caption {
+      margin-top: 1.25rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-align: center;
+    }
+    .intro-text { padding-top: 0.5rem; }
+    .intro-text .opening {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--night);
+      margin-bottom: 2rem;
+    }
+    .intro-text p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-bottom: 1.4rem;
+      line-height: 1.9;
+    }
+
+    /* ─── Story Sections ────────────────────────────────── */
+    .story-section {
+      padding: 5rem 0;
+      border-top: 1px solid rgba(184,147,106,0.15);
+    }
+    .story-section:first-of-type { border-top: none; }
+    .story-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .story-section h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--night);
+      margin-bottom: 2rem;
+    }
+    .story-section p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-bottom: 1.4rem;
+      line-height: 1.9;
+    }
+    .story-section p:last-child { margin-bottom: 0; }
+
+    /* ─── Pull Quote ─────────────────────────────────────── */
+    .pull-quote {
+      background: var(--night);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .pull-quote blockquote {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold-light);
+      max-width: 740px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.45;
+    }
+    .pull-quote cite {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.3);
+      font-style: normal;
+    }
+
+    /* ─── Influences ────────────────────────────────────── */
+    .influences { background: var(--parchment); padding: 5rem 0; }
+    .influences h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--night);
+      margin-bottom: 0.5rem;
+    }
+    .influences-intro {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-bottom: 3rem;
+      line-height: 1.9;
+    }
+    .influences-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .influence-card {
+      background: var(--ivory);
+      border: 1px solid rgba(184,147,106,0.15);
+      padding: 2rem;
+      transition: border-color 0.3s ease;
+    }
+    .influence-card:hover { border-color: var(--gold); }
+    .influence-card h3 {
+      font-size: 1.1rem;
+      color: var(--night);
+      margin-bottom: 0.5rem;
+    }
+    .influence-card p {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+    .influence-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: rgba(184,147,106,0.2);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ─── Values ────────────────────────────────────────── */
+    .values { background: var(--ivory); padding: 5rem 0; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .value-item {
+      padding: 2.5rem;
+      border: 1px solid rgba(184,147,106,0.12);
+      margin: -1px 0 0 -1px;
+    }
+    .value-item h3 {
+      font-size: 1.2rem;
+      color: var(--night);
+      margin-bottom: 0.6rem;
+    }
+    .value-item p {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+    .value-dash {
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0.6;
+    }
+
+    /* ─── CTA ───────────────────────────────────────────── */
+    .about-cta {
+      background: var(--night);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .about-cta h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+    .about-cta p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2.5rem;
+    }
+    .about-cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    footer {
+      background: var(--night);
+      border-top: 1px solid rgba(184,147,106,0.15);
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: rgba(250,248,243,0.6);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.35);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-copy { font-size: 0.62rem; color: rgba(250,248,243,0.2); }
+
+    /* ─── Reveal animation ──────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── Responsive ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .intro-image-wrap { max-width: 320px; margin: 0 auto; }
+      .influences-grid { grid-template-columns: 1fr 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1.25rem; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: rgba(25,25,38,0.98);
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        z-index: 99;
+      }
+      .nav-links.open a { font-size: 1.2rem; }
+      .nav-toggle { display: flex; z-index: 101; }
+      .influences-grid { grid-template-columns: 1fr; }
+      .page-header { padding: 8rem 1.5rem 4rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .about-cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────── -->
+  <nav id="nav" role="navigation">
+    <a href="index.html" class="nav-logo">Mindsalon</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about" class="active">About</a></li>
+      <li><a href="index.html#salon">The Salon</a></li>
+      <li><a href="index.html#coaching">Coaching</a></li>
+      <li><a href="index.html#areas">Themes</a></li>
+      <li><a href="index.html#contact" class="btn btn--gold">Join</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── Page Header ─────────────────────────────────────── -->
+  <header class="page-header">
+    <div class="page-header-bg"></div>
+    <a href="index.html" class="page-header-back">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+        <path d="M13 5H1M1 5L5 1M1 5L5 9" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      Back to Mindsalon
+    </a>
+    <h1>How I Got Here</h1>
+    <p class="page-header-sub">A story about conversation, belonging, and the courage to gather</p>
+  </header>
+
+  <!-- ─── Intro ────────────────────────────────────────────── -->
+  <section class="intro">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-image-wrap reveal">
+          <div class="intro-image-frame">
+            <img src="images/karolina.jpg" alt="Karolina Broskova" />
+          </div>
+          <div class="intro-image-accent" aria-hidden="true"></div>
+          <p class="intro-caption">Karolina Broskova · Madrid</p>
+        </div>
+        <div class="intro-text reveal reveal-delay-1">
+          <p class="opening">
+            I grew up believing that the best moments in life happen around a table —
+            when the food goes cold because the conversation has caught fire.
+          </p>
+          <p>
+            I am Karolina Broskova — a facilitator, a coach, and an incorrigible believer
+            in the power of human conversation. I was born in the Czech Republic, shaped
+            by Central European intellectual life, and I have spent the last years living
+            in Madrid — a city that, I discovered, has exactly the right temperament for
+            what I wanted to build.
+          </p>
+          <p>
+            Mindsalon is not a business idea I arrived at. It is something I arrived at
+            through living — through every conversation that left me more alive, and every
+            social gathering that left me lonelier than before I arrived.
+          </p>
+          <p>
+            This is the story of how I got here.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Story Body ───────────────────────────────────────── -->
+  <section style="background: var(--ivory); padding: 5rem 0 0;">
+    <div class="container--narrow">
+
+      <div class="story-section reveal">
+        <span class="story-label">The Beginning</span>
+        <h2>A childhood shaped by gathered people</h2>
+        <p>
+          Growing up, my home was often full of people. Not parties — gatherings. Adults
+          who came to talk seriously about ideas, about the world, about what mattered.
+          I was young enough to be invisible, old enough to listen. And what I absorbed,
+          sitting quietly in corners, was this: people become more themselves in the right
+          company. Something unlocks. A generosity of spirit appears that ordinary life
+          rarely demands.
+        </p>
+        <p>
+          I didn't have a name for what I was witnessing. I just knew I wanted to spend
+          my life in rooms like that.
+        </p>
+      </div>
+
+      <div class="story-section reveal">
+        <span class="story-label">The Question</span>
+        <h2>What happens when connection becomes performance?</h2>
+        <p>
+          By the time I was an adult, something had shifted in the social world around
+          me. Gatherings multiplied — but depth didn't. We became extraordinarily
+          connected and, simultaneously, extraordinarily alone. I watched people perform
+          versions of themselves at dinner parties, scroll through their phones at
+          restaurant tables, mistake the volume of their social lives for the richness
+          of them.
+        </p>
+        <p>
+          I felt this too. I was not immune. I went to many evenings that looked
+          meaningful from the outside and felt hollow from the inside. And I kept
+          asking myself the same question: <em>what would need to be different for
+          real conversation to happen?</em>
+        </p>
+        <p>
+          That question became a kind of obsession — and eventually, an answer.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Pull Quote 1 ─────────────────────────────────────── -->
+  <div class="pull-quote">
+    <blockquote>
+      "I went to many evenings that looked meaningful from the outside
+      and felt hollow from the inside. I kept asking: what would need
+      to be different?"
+    </blockquote>
+    <cite>— Karolina Broskova</cite>
+  </div>
+
+  <section style="background: var(--ivory); padding: 0 0 5rem;">
+    <div class="container--narrow">
+
+      <div class="story-section reveal">
+        <span class="story-label">The Turn</span>
+        <h2>Discovering the salon tradition</h2>
+        <p>
+          I came across the history of the French salons almost by accident — reading
+          about 17th-century Paris, about the women who hosted these gatherings in
+          their homes and created, in the process, some of the most generative
+          intellectual communities in Western history. The philosophes didn't write
+          their ideas in isolation and then share them. They <em>talked them into
+          existence</em>, in salons, over years, in conversation.
+        </p>
+        <p>
+          I remember reading this and feeling something click. Here was the answer
+          to my question. Not a new social format — an ancient one, elegantly solved.
+          Small groups. Curated guests. A theme that matters. A host who holds the
+          space. The domestic setting as a deliberate choice. No performance required.
+        </p>
+        <p>
+          All it needed was someone willing to do it again.
+        </p>
+      </div>
+
+      <div class="story-section reveal">
+        <span class="story-label">Why Madrid</span>
+        <h2>A city that knows how to talk</h2>
+        <p>
+          I moved to Madrid not with Mindsalon in mind, but Madrid had its own ideas.
+          It is a city where people still linger at tables. Where conversation is
+          considered a legitimate use of an entire evening. Where the culture of
+          the <em>tertulia</em> — the Spanish tradition of gathering to discuss ideas —
+          runs quietly beneath the surface of everyday life.
+        </p>
+        <p>
+          And it is a city full of international people who have left one home and
+          are building another — people who carry within them a particular kind
+          of openness, a particular hunger for real connection that comes from
+          having crossed a threshold. These are exactly the people I wanted to
+          gather.
+        </p>
+        <p>
+          I hosted the first Mindsalon in a small apartment in the centre of the city.
+          Six people. Two hours. A theme I had chosen carefully. And something
+          happened that evening that I hadn't quite dared to expect: strangers
+          became real to each other. Not acquaintances — real. It was the room
+          I had been looking for since childhood.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Pull Quote 2 ─────────────────────────────────────── -->
+  <div class="pull-quote">
+    <blockquote>
+      "Strangers became real to each other. Not acquaintances — real.
+      It was the room I had been looking for since childhood."
+    </blockquote>
+    <cite>— On the first Mindsalon, Madrid 2024</cite>
+  </div>
+
+  <section style="background: var(--ivory); padding: 0 0 5rem;">
+    <div class="container--narrow">
+
+      <div class="story-section reveal">
+        <span class="story-label">The Coaching</span>
+        <h2>When the salon moved into one-to-one</h2>
+        <p>
+          As the salons grew, something began to happen that I hadn't anticipated.
+          Guests would stay behind after the evening ended — or write to me days
+          later — wanting to continue. Not the group conversation, but a more
+          personal one. One that was about them, specifically. About the question
+          that had surfaced during the evening that they couldn't quite let go of.
+        </p>
+        <p>
+          Coaching found me through that door. I trained formally because I wanted
+          to be trustworthy in that space — to hold it properly, not just
+          instinctively. But the philosophy is the same as the salon: I believe
+          that people carry their own answers. They often simply need the right
+          conditions — the right questions, the right quality of attention —
+          for those answers to become audible.
+        </p>
+        <p>
+          My coaching practice is not separate from Mindsalon. It is its quieter,
+          more intimate room.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Intellectual Influences ──────────────────────────── -->
+  <section class="influences">
+    <div class="container">
+      <span class="tag reveal">Intellectual Influences</span>
+      <span class="gold-line reveal"></span>
+      <h2 class="reveal">Thinkers who shaped the work</h2>
+      <p class="influences-intro reveal">
+        Mindsalon stands on the shoulders of those who understood, before me,
+        that conversation is not just how we communicate — it is how we think,
+        how we heal, and how we become.
+      </p>
+      <div class="influences-grid">
+        <div class="influence-card reveal">
+          <div class="influence-num">01</div>
+          <h3>Martin Buber</h3>
+          <p>His philosophy of the "I–Thou" relationship — the idea that genuine encounter transforms both parties — is the ethical foundation of everything I do.</p>
+        </div>
+        <div class="influence-card reveal reveal-delay-1">
+          <div class="influence-num">02</div>
+          <h3>Hannah Arendt</h3>
+          <p>Her insistence on the public space of appearance — where we become who we are through speech and action with others — gave me a political vocabulary for why salons matter.</p>
+        </div>
+        <div class="influence-card reveal reveal-delay-2">
+          <div class="influence-num">03</div>
+          <h3>Esther Perel</h3>
+          <p>Her work on relationship and desire reminded me that the most important human questions are rarely the ones we ask aloud — and that creating space for them is itself a radical act.</p>
+        </div>
+        <div class="influence-card reveal">
+          <div class="influence-num">04</div>
+          <h3>David Bohm</h3>
+          <p>His concept of dialogue as a collective thinking process — something qualitatively different from debate or discussion — gave me the theoretical backbone for how I facilitate.</p>
+        </div>
+        <div class="influence-card reveal reveal-delay-1">
+          <div class="influence-num">05</div>
+          <h3>Sherry Turkle</h3>
+          <p>Her research on how technology reshapes human connection convinced me that what Mindsalon offers is not nostalgic — it is urgent.</p>
+        </div>
+        <div class="influence-card reveal reveal-delay-2">
+          <div class="influence-num">06</div>
+          <h3>The Salon Tradition</h3>
+          <p>Marie-Thérèse Rodet Geoffrin, Madame de Staël, Gertrude Stein — the great salon hosts who understood that the right room changes what is thinkable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── What I Believe ───────────────────────────────────── -->
+  <section class="values">
+    <div class="container">
+      <span class="tag reveal">What I Believe</span>
+      <span class="gold-line reveal"></span>
+      <h2 style="font-size: clamp(1.8rem,3vw,2.6rem); color:var(--night); margin-bottom:2.5rem;" class="reveal">The convictions that guide the work</h2>
+      <div class="values-grid">
+        <div class="value-item reveal">
+          <span class="value-dash"></span>
+          <h3>Conversation is not a soft skill</h3>
+          <p>It is the primary technology of human civilisation. Every meaningful thing we have built together — ideas, institutions, relationships — began with someone talking to someone else.</p>
+        </div>
+        <div class="value-item reveal reveal-delay-1">
+          <span class="value-dash"></span>
+          <h3>Small is not a compromise</h3>
+          <p>Six people in a room is not a scaled-down version of something larger. It is its own distinct phenomenon — with a depth, an intimacy, and a generative power that no larger gathering can replicate.</p>
+        </div>
+        <div class="value-item reveal">
+          <span class="value-dash"></span>
+          <h3>The host is not the expert</h3>
+          <p>My role in both the salon and the coaching room is to create the conditions for something to happen — not to determine what that something is. The wisdom is always in the room.</p>
+        </div>
+        <div class="value-item reveal reveal-delay-1">
+          <span class="value-dash"></span>
+          <h3>Belonging is not given — it is made</h3>
+          <p>Every Mindsalon gathering is a deliberate act of making belonging possible. It requires intention, craft, and care. It does not happen by accident.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ──────────────────────────────────────────────── -->
+  <section class="about-cta">
+    <h2 class="reveal">Ready to find your room?</h2>
+    <p class="reveal reveal-delay-1">Every gathering begins with a single conversation.</p>
+    <div class="about-cta-buttons reveal reveal-delay-2">
+      <a href="index.html#contact" class="btn btn--gold">Begin the Conversation</a>
+      <a href="index.html#salon" class="btn btn--light">Discover the Salon</a>
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Mindsalon</a>
+      <ul class="footer-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#salon">The Salon</a></li>
+        <li><a href="index.html#coaching">Coaching</a></li>
+        <li><a href="index.html#areas">Themes</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Mindsalon · Madrid</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
