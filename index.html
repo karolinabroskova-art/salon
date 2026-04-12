@@ -1183,9 +1183,8 @@
         want to know more — I'd love to hear from you. Fill in the form and I will
         personally be in touch within a few days.
       </p>
-      <form class="contact-form reveal reveal-delay-2" method="POST" action="https://formspree.io/f/mvzdpzwl">
+      <form class="contact-form reveal reveal-delay-2" id="contactForm">
         <input type="hidden" name="_subject" value="New Mindsalon enquiry" />
-        <input type="hidden" name="_next" value="https://mindsalon.org/thank-you.html" />
         <div class="form-row">
           <div class="form-field">
             <label for="name">Your Name</label>
@@ -1213,9 +1212,9 @@
           <textarea id="message" name="message" placeholder="A few words about what you are seeking or what draws you to Mindsalon…"></textarea>
         </div>
         <div class="form-submit">
-          <button type="submit" class="btn btn--gold">Send My Note &rarr;</button>
+          <button type="submit" class="btn btn--gold" id="submitBtn">Send My Note &rarr;</button>
         </div>
-        <p class="form-note">Your message goes directly to Karolina. No automated responses.</p>
+        <p class="form-note" id="formNote">Your message goes directly to Karolina. No automated responses.</p>
       </form>
     </div>
   </section>
@@ -1242,6 +1241,35 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
+
+    // Contact form — submit via fetch to keep redirect on our side
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn   = document.getElementById('submitBtn');
+    const formNote    = document.getElementById('formNote');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.textContent = 'Sending…';
+        submitBtn.disabled = true;
+        try {
+          const response = await fetch('https://formspree.io/f/mvzdpzwl', {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (response.ok) {
+            window.location.href = 'thank-you.html';
+          } else {
+            throw new Error('Server error');
+          }
+        } catch (err) {
+          submitBtn.textContent = 'Send My Note →';
+          submitBtn.disabled = false;
+          formNote.textContent = 'Something went wrong — please try again or email hello@mindsalon.org directly.';
+          formNote.style.color = '#d4846a';
+        }
+      });
+    }
 
     // Mobile menu
     const toggle = document.getElementById('navToggle');
