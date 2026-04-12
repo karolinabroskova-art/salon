@@ -1183,7 +1183,9 @@
         want to know more — I'd love to hear from you. Fill in the form and I will
         personally be in touch within a few days.
       </p>
-      <form class="contact-form reveal reveal-delay-2" name="contact" method="POST" action="mailto:hello@mindsalon.com" enctype="text/plain">
+      <form class="contact-form reveal reveal-delay-2" method="POST" action="https://formspree.io/f/mvzdpzwl">
+        <input type="hidden" name="_subject" value="New Mindsalon enquiry" />
+        <input type="hidden" name="_next" value="https://mindsalon.org/thank-you.html" />
         <div class="form-row">
           <div class="form-field">
             <label for="name">Your Name</label>
@@ -1198,12 +1200,12 @@
           <label for="interest">I am interested in</label>
           <select id="interest" name="interest">
             <option value="">— Please select —</option>
-            <option value="salon">Attending a Salon</option>
-            <option value="coaching-single">Single Coaching Session</option>
-            <option value="coaching-journey">Coaching Journey (6–12 sessions)</option>
-            <option value="group">Group Coaching</option>
-            <option value="facilitation">Facilitation / Workshops</option>
-            <option value="other">Something else</option>
+            <option value="Attending a Salon">Attending a Salon</option>
+            <option value="Single Coaching Session">Single Coaching Session</option>
+            <option value="Coaching Journey (6–12 sessions)">Coaching Journey (6–12 sessions)</option>
+            <option value="Group Coaching">Group Coaching</option>
+            <option value="Facilitation / Workshops">Facilitation / Workshops</option>
+            <option value="Something else">Something else</option>
           </select>
         </div>
         <div class="form-field">
