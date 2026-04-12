@@ -548,13 +548,12 @@
       line-height: 1.8;
     }
 
-    /* ─── Process ───────────────────────────────────────── */
+    /* ─── Process (Two-Track) ───────────────────────────── */
     #process {
       background: var(--night);
       color: var(--ivory);
-      text-align: center;
     }
-    .process-header { margin-bottom: 4.5rem; }
+    .process-header { text-align: center; margin-bottom: 4rem; }
     .process-header h2 {
       font-size: clamp(2.2rem, 4vw, 3.4rem);
       color: var(--ivory);
@@ -566,46 +565,196 @@
       max-width: 520px;
       margin: 0 auto;
     }
-    .process-steps {
+    .tracks-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      position: relative;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
     }
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 2.2rem;
-      left: 12.5%;
-      right: 12.5%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(184,147,106,0.3), transparent);
+    .track {
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(184,147,106,0.12);
     }
-    .process-step { padding: 0 1.5rem; }
-    .step-circle {
-      width: 44px;
-      height: 44px;
-      border: 1px solid rgba(184,147,106,0.5);
-      border-radius: 50%;
+    .track--private { background: rgba(255,255,255,0.02); }
+    .track--open    { background: rgba(184,147,106,0.04); }
+    .track-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .track h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--ivory);
+      margin-bottom: 0.5rem;
+    }
+    .track-desc {
+      font-size: 0.78rem;
+      color: rgba(250,248,243,0.45);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .track-steps { list-style: none; margin-bottom: 2.5rem; }
+    .track-steps li {
       display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(184,147,106,0.08);
+    }
+    .track-steps li:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      opacity: 0.6;
+      min-width: 1.5rem;
+      padding-top: 0.1rem;
+    }
+    .step-body h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--gold-light);
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+    .step-body p {
+      font-size: 0.75rem;
+      color: rgba(250,248,243,0.45);
+      line-height: 1.75;
+    }
+    .track-divider {
+      width: 1px;
+      background: rgba(184,147,106,0.15);
+      align-self: stretch;
+    }
+
+    /* ─── Upcoming Salons ───────────────────────────────── */
+    #upcoming { background: var(--parchment); }
+    .upcoming-header { text-align: center; margin-bottom: 3.5rem; }
+    .upcoming-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--night);
+      margin-bottom: 1rem;
+    }
+    .upcoming-header p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.85;
+    }
+    .event-card {
+      background: var(--ivory);
+      border: 1px solid rgba(184,147,106,0.2);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .event-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 40px rgba(25,25,38,0.08);
+    }
+    .event-date-col {
+      background: var(--night);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 2rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--gold);
-      position: relative;
-      background: var(--night);
+      min-width: 110px;
+      text-align: center;
     }
-    .process-step h3 {
-      font-size: 1.1rem;
-      color: var(--gold-light);
+    .event-month {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+    .event-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .event-year {
+      font-size: 0.65rem;
+      color: rgba(250,248,243,0.3);
+      letter-spacing: 0.1em;
+    }
+    .event-body { padding: 2.5rem; border-left: 1px solid rgba(184,147,106,0.12); }
+    .event-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .event-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      text-transform: uppercase;
+    }
+    .event-meta-item svg { color: var(--gold); opacity: 0.7; }
+    .event-body h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      color: var(--night);
       margin-bottom: 0.75rem;
     }
-    .process-step p {
-      font-size: 0.78rem;
-      color: rgba(250,248,243,0.5);
+    .event-body p {
+      font-size: 0.82rem;
+      color: var(--text-mid);
       line-height: 1.85;
+      max-width: 600px;
+    }
+    .event-action-col {
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      border-left: 1px solid rgba(184,147,106,0.12);
+      min-width: 160px;
+      text-align: center;
+    }
+    .event-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--night);
+      line-height: 1;
+    }
+    .event-price-note {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+    .event-seats {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .no-upcoming {
+      text-align: center;
+      padding: 4rem 2rem;
+      border: 1px dashed rgba(184,147,106,0.25);
+      color: var(--text-light);
+      font-size: 0.85rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
     }
 
     /* ─── Pull Quote ─────────────────────────────────────── */
@@ -793,8 +942,10 @@
       .about-image-wrap { order: -1; max-width: 380px; margin: 0 auto; }
       .coaching-grid { grid-template-columns: 1fr; gap: 3rem; }
       .areas-grid { grid-template-columns: repeat(2, 1fr); }
-      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
-      .process-steps::before { display: none; }
+      .tracks-grid { grid-template-columns: 1fr; }
+      .event-card { grid-template-columns: 1fr; }
+      .event-date-col { flex-direction: row; gap: 1rem; padding: 1.5rem 2rem; min-width: unset; justify-content: flex-start; }
+      .event-action-col { border-left: none; border-top: 1px solid rgba(184,147,106,0.12); flex-direction: row; justify-content: space-between; align-items: center; }
       .salon-features { grid-template-columns: 1fr 1fr; }
     }
 
@@ -817,7 +968,8 @@
       .nav-links.open a { font-size: 1.2rem; }
       .nav-toggle { display: flex; z-index: 101; }
       .areas-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+      .event-body { padding: 1.5rem; }
+      .event-action-col { padding: 1.5rem; }
       .salon-features { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; text-align: center; }
@@ -834,6 +986,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#salon">The Salon</a></li>
+      <li><a href="#upcoming">Salons</a></li>
       <li><a href="#coaching">Coaching</a></li>
       <li><a href="#areas">Themes</a></li>
       <li><a href="#contact" class="btn btn--gold nav-cta">Join</a></li>
@@ -1126,37 +1279,143 @@
     </div>
   </section>
 
-  <!-- ─── Process ───────────────────────────────────────────── -->
+  <!-- ─── Process (Two-Track) ──────────────────────────────── -->
   <section id="process" class="section--lg">
     <div class="container">
       <div class="process-header reveal">
         <span class="tag">How It Works</span>
         <span class="gold-line" style="margin:1.5rem auto;" aria-hidden="true"></span>
-        <h2>The Path to Your First Gathering</h2>
-        <p>Simple, unhurried, and deeply personal from the very first exchange.</p>
+        <h2>Two Paths into Mindsalon</h2>
+        <p>Whether you seek an exclusive personal invitation or an open gathering — both begin with genuine curiosity.</p>
       </div>
-      <div class="process-steps">
-        <div class="process-step reveal">
-          <div class="step-circle">I</div>
-          <h3>Reach Out</h3>
-          <p>Send a brief note through the form below — tell me a little about yourself and what draws you here.</p>
+      <div class="tracks-grid">
+
+        <!-- Track 1: Private Salon -->
+        <div class="track track--private reveal">
+          <span class="track-label">Private</span>
+          <h3>The Invitation Salon</h3>
+          <p class="track-desc">By personal invitation only. A curated gathering of six, assembled with care. You don't sign up — you are invited.</p>
+          <ul class="track-steps">
+            <li>
+              <span class="step-num">I</span>
+              <div class="step-body">
+                <h4>Reach Out</h4>
+                <p>Send a brief note below — tell me a little about yourself and what draws you to Mindsalon.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">II</span>
+              <div class="step-body">
+                <h4>Introductory Conversation</h4>
+                <p>A short personal exchange — to understand what you are seeking and whether this is the right fit.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">III</span>
+              <div class="step-body">
+                <h4>Your Invitation Arrives</h4>
+                <p>If the fit is right, you receive a personal invitation to an upcoming salon matched to your interests.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">IV</span>
+              <div class="step-body">
+                <h4>The Conversation</h4>
+                <p>You arrive. You meet. Something shifts — as it always does when real conversation happens.</p>
+              </div>
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn--light">Get in Touch</a>
         </div>
-        <div class="process-step reveal reveal-delay-1">
-          <div class="step-circle">II</div>
-          <h3>Introductory Call</h3>
-          <p>A short conversation to understand what you are seeking and whether the salon or coaching is the right fit for you.</p>
+
+        <!-- Track 2: Open Salon -->
+        <div class="track track--open reveal reveal-delay-1">
+          <span class="track-label">Open</span>
+          <h3>The Open Salon</h3>
+          <p class="track-desc">Public gatherings on a set theme, open to anyone who feels the pull. Six seats. First come, first considered — registration requires host approval.</p>
+          <ul class="track-steps">
+            <li>
+              <span class="step-num">I</span>
+              <div class="step-body">
+                <h4>Browse the Calendar</h4>
+                <p>Explore upcoming salons below — each centred on a theme chosen for its depth and urgency.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">II</span>
+              <div class="step-body">
+                <h4>Choose Your Evening</h4>
+                <p>Find the topic that speaks to you. Read the description. If it resonates — you belong in the room.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">III</span>
+              <div class="step-body">
+                <h4>Reserve Your Seat</h4>
+                <p>Request your spot via the event page. Capacity is strictly limited to six. Your place is confirmed once approved.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">IV</span>
+              <div class="step-body">
+                <h4>The Conversation</h4>
+                <p>You arrive. You meet strangers who become real to you. And you leave changed — however subtly.</p>
+              </div>
+            </li>
+          </ul>
+          <a href="#upcoming" class="btn btn--gold">See Upcoming Salons &darr;</a>
         </div>
-        <div class="process-step reveal reveal-delay-2">
-          <div class="step-circle">III</div>
-          <h3>Your Invitation</h3>
-          <p>For the salon: you receive a personal invitation to an upcoming gathering matched to your interests and schedule.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Upcoming Salons ────────────────────────────────────── -->
+  <section id="upcoming" class="section--lg">
+    <div class="container">
+      <div class="upcoming-header reveal">
+        <span class="tag">Upcoming Gatherings</span>
+        <span class="gold-line" style="margin:1.5rem auto;" aria-hidden="true"></span>
+        <h2>Open Salons</h2>
+        <p>Six seats per evening. Reserve yours before they are gone.</p>
+      </div>
+
+      <!-- Event Card -->
+      <div class="event-card reveal">
+        <div class="event-date-col">
+          <div class="event-month">May</div>
+          <div class="event-day">09</div>
+          <div class="event-year">2026</div>
         </div>
-        <div class="process-step reveal reveal-delay-3">
-          <div class="step-circle">IV</div>
-          <h3>The Conversation</h3>
-          <p>You arrive. You meet. You talk. And something shifts — quietly, inevitably, as it always does when real conversation happens.</p>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-meta-item">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor"/><path d="M6 3v3l2 2" stroke="currentColor" stroke-linecap="round"/></svg>
+              5:30 – 8:30 PM
+            </span>
+            <span class="event-meta-item">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor"/></svg>
+              Private Residence, Madrid
+            </span>
+            <span class="event-meta-item">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 3h8M2 6h8M2 9h5" stroke="currentColor" stroke-linecap="round"/></svg>
+              Approval Required
+            </span>
+          </div>
+          <h3>Salon: (De)Globalisation — State of the Art</h3>
+          <p>Is globalisation reversing? Drawing on Elisabeth Braw's <em>Goodbye Globalisation</em>, we explore what the interconnected world brought us — and what it took. In a room of six people who have lived across borders, no theory survives without a personal counterpoint.</p>
+        </div>
+        <div class="event-action-col">
+          <div>
+            <div class="event-price">€40</div>
+            <div class="event-price-note">per person</div>
+          </div>
+          <div class="event-seats">6 seats only</div>
+          <a href="https://lu.ma/j8hwpfo8" target="_blank" rel="noopener" class="btn btn--gold">Reserve a Seat</a>
         </div>
       </div>
+      <!-- End Event Card -->
+
     </div>
   </section>
 
