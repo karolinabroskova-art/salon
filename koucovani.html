@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koučink — Karolina Broskova · Mindsalon</title>
+  <meta name="description" content="Ontologický koučink v češtině a slovenštině — individuální sezení, koučovací cesta a skupinový koučink s Karolinou Broskovou. Online nebo osobně v Madridu." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+
+    :root {
+      --ivory:      #faf8f3;
+      --parchment:  #f0ebe0;
+      --night:      #191926;
+      --gold:       #b8936a;
+      --gold-light: #d4b896;
+      --text:       #282420;
+      --text-mid:   #5a5550;
+      --text-light: #9a9490;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      background: var(--ivory);
+      color: var(--text);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .container        { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container--narrow { max-width: 720px;  margin: 0 auto; padding: 0 2rem; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .gold-line {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border: 1px solid currentColor;
+      transition: all 0.35s ease;
+      cursor: pointer;
+      background: transparent;
+    }
+    .btn--gold  { color: var(--gold);  border-color: var(--gold); }
+    .btn--gold:hover  { background: var(--gold);  color: var(--ivory); }
+    .btn--dark  { color: var(--night); border-color: rgba(40,36,32,0.4); }
+    .btn--dark:hover  { background: var(--night); color: var(--ivory); }
+    .btn--light { color: var(--ivory); border-color: rgba(250,248,243,0.5); }
+    .btn--light:hover { background: var(--ivory); color: var(--night); }
+
+    /* ─── Navigation ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(25,25,38,0.97);
+      box-shadow: 0 1px 0 rgba(184,147,106,0.2);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      color: var(--ivory);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Hero ───────────────────────────────────────────── */
+    .hero {
+      background: var(--night);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(184,147,106,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: var(--ivory);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .hero-ornament {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .hero-ornament span { display: block; width: 60px; height: 1px; background: rgba(184,147,106,0.4); }
+    .hero-ornament-circle { width: 6px; height: 6px; border: 2px solid rgba(184,147,106,0.5); border-radius: 50%; }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+    }
+    .hero-sub {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: rgba(250,248,243,0.4);
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── About ──────────────────────────────────────────── */
+    .about-section { background: var(--parchment); padding: 6rem 0; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-image-frame {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-image-frame::after {
+      content: '';
+      position: absolute; inset: 0;
+      border: 1px solid rgba(184,147,106,0.3);
+      pointer-events: none;
+    }
+    .about-image-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top; display: block;
+    }
+    .about-content .opening {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      color: var(--night);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    .about-content p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-bottom: 1.4rem;
+      line-height: 1.9;
+    }
+
+    /* ─── Coaching ───────────────────────────────────────── */
+    .coaching-section { background: var(--ivory); padding: 6rem 0; }
+    .coaching-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--night);
+      margin-bottom: 1rem;
+    }
+    .coaching-intro {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      max-width: 600px;
+      line-height: 1.9;
+      margin-bottom: 3.5rem;
+    }
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .offering-card {
+      background: var(--parchment);
+      border: 1px solid rgba(184,147,106,0.15);
+      padding: 2.5rem;
+      transition: border-color 0.3s ease;
+    }
+    .offering-card:hover { border-color: var(--gold); }
+    .offering-tag {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .offering-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--night);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+    .offering-card p {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    /* ─── Areas ──────────────────────────────────────────── */
+    .areas-section { background: var(--parchment); padding: 6rem 0; }
+    .areas-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--night);
+      margin-bottom: 0.75rem;
+    }
+    .areas-intro {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-bottom: 3rem;
+      line-height: 1.9;
+      max-width: 600px;
+    }
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .area-card {
+      background: var(--ivory);
+      border: 1px solid rgba(184,147,106,0.15);
+      padding: 1.75rem;
+      transition: border-color 0.3s ease;
+    }
+    .area-card:hover { border-color: var(--gold); }
+    .area-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: rgba(184,147,106,0.2);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .area-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--night);
+      margin-bottom: 0.5rem;
+    }
+    .area-card p {
+      font-size: 0.76rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ─── Contact ────────────────────────────────────────── */
+    .contact-section { background: var(--night); padding: 7rem 2rem; }
+    .contact-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+    .contact-inner h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+    }
+    .contact-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 3rem;
+    }
+    .form-group { margin-bottom: 1.25rem; text-align: left; }
+    .form-group label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.5);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(250,248,243,0.05);
+      border: 1px solid rgba(184,147,106,0.25);
+      color: var(--ivory);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      padding: 0.9rem 1.1rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { min-height: 130px; resize: vertical; }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(250,248,243,0.25); }
+    .form-submit { text-align: center; margin-top: 2rem; }
+    .form-submit button { font-family: 'Montserrat', sans-serif; }
+    .form-note {
+      font-size: 0.72rem;
+      color: rgba(250,248,243,0.3);
+      margin-top: 1.25rem;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    footer {
+      background: var(--night);
+      border-top: 1px solid rgba(184,147,106,0.15);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(250,248,243,0.4);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .footer-copy { font-size: 0.62rem; color: rgba(250,248,243,0.2); }
+
+    /* ─── Reveal ─────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image-frame { max-width: 280px; margin: 0 auto; }
+      .offerings-grid { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1.25rem; }
+      .areas-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────── -->
+  <nav>
+    <a href="koucovani.html" class="nav-logo">Mindsalon</a>
+  </nav>
+
+  <!-- ─── Hero ────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <p class="hero-tag">Karolina Broskova · Madrid</p>
+    <h1>Koučink, který<br>něco změní</h1>
+    <div class="hero-ornament">
+      <span></span>
+      <div class="hero-ornament-circle"></div>
+      <span></span>
+    </div>
+    <p class="hero-tagline">Individuální a skupinový koučink v češtině a slovenštině</p>
+    <p class="hero-sub">Online nebo osobně v Madridu</p>
+    <a href="#kontakt" class="btn btn--gold">Napiš mi</a>
+  </section>
+
+  <!-- ─── About ────────────────────────────────────────────── -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="about-image-frame">
+            <img src="images/DSC05514_2.jpg" alt="Karolina Broskova" />
+          </div>
+        </div>
+        <div class="about-content reveal reveal-delay-1">
+          <span class="tag">O mně</span>
+          <span class="gold-line"></span>
+          <p class="opening">
+            Celý život mě fascinuje jazyk — co říkáme, jak to říkáme
+            a co se změní, když to začneme říkat jinak.
+          </p>
+          <p>
+            Jsem Karolina Broskova. Slovenka, která přes Prahu dorazila do Madridu.
+            Právnička, compliance manažerka pro západní Evropu a certifikující se
+            ontologický kouč. Většinu kariéry jsem pracovala se slovem v jeho přesné,
+            závazné podobě — v soudních síních a compliance odděleních. Co jsem pomalu
+            objevila: to, co lidi skutečně hýbe, nemá se zákonem skoro nic společného.
+            Je to emoce ukrytá v jazyce.
+          </p>
+          <p>
+            Ontologický koučink pracuje s jazykem, tělem a emocemi jako třemi rovinami,
+            skrze které tvarujeme svou realitu. Nejsem kouč, který ti řekne, co máš dělat.
+            Jsem kouč, který vytvoří prostor, kde se věci mohou skutečně posunout.
+          </p>
+          <p>
+            Ještě nejsem certifikovaná — jsem ve výcviku, s veškerou přísností
+            a pokorou, která k tomu patří. Sezení probíhají v češtině, slovenštině
+            nebo angličtině — online nebo osobně v Madridu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Coaching Offerings ───────────────────────────────── -->
+  <section class="coaching-section">
+    <div class="container">
+      <span class="tag reveal">Nabídka</span>
+      <span class="gold-line reveal"></span>
+      <h2 class="reveal">Jak můžeme pracovat spolu</h2>
+      <p class="coaching-intro reveal">
+        Každý přichází s něčím jiným. Nabízím tři formy práce —
+        podle toho, co právě potřebuješ.
+      </p>
+      <div class="offerings-grid">
+        <div class="offering-card reveal">
+          <span class="offering-tag">Objev</span>
+          <h3>Jednorázové sezení</h3>
+          <p>
+            Jedno soustředěné 90minutové sezení pro ty, kdo chtějí prozkoumat
+            konkrétní situaci, rozhodnutí nebo otázku. Bez závazku, s plnou pozorností.
+          </p>
+        </div>
+        <div class="offering-card reveal reveal-delay-1">
+          <span class="offering-tag">Hloubková práce</span>
+          <h3>Koučovací cesta</h3>
+          <p>
+            Strukturovaná série 6–12 sezení v průběhu tří až šesti měsíců.
+            Pracujeme na tématu, které ti leží na srdci — s jasným záměrem
+            a prostorem pro to, co přichází.
+          </p>
+        </div>
+        <div class="offering-card reveal reveal-delay-2">
+          <span class="offering-tag">Skupinově</span>
+          <h3>Skupinový koučink</h3>
+          <p>
+            Malá skupina lidí sdílející zájem o společné téma. Hloubka individuálního
+            koučinku obohacená skupinovou dynamikou a vzájemnou moudrostí.
+            Probíhá online.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Areas ─────────────────────────────────────────────── -->
+  <section class="areas-section">
+    <div class="container">
+      <span class="tag reveal">Témata</span>
+      <span class="gold-line reveal"></span>
+      <h2 class="reveal">Na čem můžeme pracovat</h2>
+      <p class="areas-intro reveal">
+        Tato témata jsou mi blízká z vlastní cesty. Přináším je do koučovacího
+        prostoru, protože věřím, že co hluboce zasáhlo mě, může rezonovat i s tebou.
+      </p>
+      <div class="areas-grid">
+        <div class="area-card reveal">
+          <div class="area-num">01</div>
+          <h3>Identita a sebevnímání</h3>
+          <p>Kdo jsi pod rolemi, které hraješ, a příběhy, které sis o sobě vyprávěl? Sebepoznání málokdy odhalí cizince — spíš někoho, kdo tam vždy byl.</p>
+        </div>
+        <div class="area-card reveal reveal-delay-1">
+          <div class="area-num">02</div>
+          <h3>Vztahy a intimita</h3>
+          <p>Láska není pocit, který se přihodí — je to praxe, kterou se buď učíš, nebo se jí nevěnuješ naplno. Co znamená skutečně vidět druhého — a nechat se vidět.</p>
+        </div>
+        <div class="area-card reveal reveal-delay-2">
+          <div class="area-num">03</div>
+          <h3>Životní přechody</h3>
+          <p>Změna zřídka přichází tak čistě, jak jsme plánovali. Prostor mezi tím, kým jsi byl, a kým se stáváš, je dezorientující, nutný — a jeden z nejupřímnějších.</p>
+        </div>
+        <div class="area-card reveal reveal-delay-3">
+          <div class="area-num">04</div>
+          <h3>Jazyk a hlas</h3>
+          <p>Jak mluvíme — sami se sebou i s druhými — tvaruje to, co jsme schopni cítit, myslet a stát se. Toto je prostor, kde se to zkoumá.</p>
+        </div>
+        <div class="area-card reveal">
+          <div class="area-num">05</div>
+          <h3>Smysl a směr</h3>
+          <p>Těžší otázka není, co chceš — ale jestli žiješ podle vlastních odpovědí, nebo těch, které sis zdědil tak dávno, že sis přestal všímat, že nejsou tvoje.</p>
+        </div>
+        <div class="area-card reveal reveal-delay-1">
+          <div class="area-num">06</div>
+          <h3>Odvaha se proměnit</h3>
+          <p>Většina smysluplných změn začíná paradoxem: to, čemu ses vyhýbal, se ukáže být tím, co jsi potřeboval. Tohle je prostor pro sezení s tím — bez předčasného rozuzlení.</p>
+        </div>
+        <div class="area-card reveal reveal-delay-2">
+          <div class="area-num">07</div>
+          <h3>Expat a domov</h3>
+          <p>Odešel jsi. A tím ses zařadil mezi ty, kdo žijí svůj život v určitém úhlu k místu, kde se narodili. Otázka identity, sounáležitosti a toho, co pro tebe znamená „doma".</p>
+        </div>
+        <div class="area-card reveal reveal-delay-3">
+          <div class="area-num">08</div>
+          <h3>Vnitřní dialog</h3>
+          <p>Příběhy, které si vyprávíme, fungují tiše — jako předpoklady, jistoty, „prostě tak to je". Jejich zkoumání vyžaduje odvahu být o sobě na omylu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ───────────────────────────────────────────── -->
+  <section class="contact-section" id="kontakt">
+    <div class="contact-inner">
+      <span class="tag" style="color:var(--gold);">Spojme se</span>
+      <span class="gold-line" style="margin:1.5rem auto;"></span>
+      <h2>Napiš mi</h2>
+      <p class="contact-sub">Každou zprávu čtu osobně a odpovím do několika dní.</p>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Jméno</label>
+          <input type="text" id="name" name="name" placeholder="Tvoje jméno" required />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="tvuj@email.cz" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Zpráva</label>
+          <textarea id="message" name="message" placeholder="Pár slov o tom, co hledáš nebo co tě přivádí ke koučinku…"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn--gold" id="submitBtn">Odeslat zprávu &rarr;</button>
+        </div>
+        <p class="form-note" id="formNote">Tvoje zpráva jde přímo ke mně. Žádné automatické odpovědi.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-logo">Mindsalon</span>
+    <p class="footer-copy">© 2025 Mindsalon · Madrid</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Form submission
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formNote = document.getElementById('formNote');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.textContent = 'Odesílám…';
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch('https://formspree.io/f/mvzdpzwl', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          form.innerHTML = `
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;
+              color:var(--gold-light);text-align:center;line-height:1.6;margin-top:1rem;">
+              Děkuji. Tvoje zpráva dorazila.<br>
+              <span style="font-size:0.85rem;color:rgba(250,248,243,0.45);font-style:normal;
+                font-family:'Montserrat',sans-serif;">Ozvu se ti do několika dní.</span>
+            </p>`;
+        } else {
+          submitBtn.textContent = 'Odeslat zprávu →';
+          submitBtn.disabled = false;
+          formNote.textContent = 'Něco se pokazilo. Zkus to pros\xedm znovu.';
+        }
+      } catch {
+        submitBtn.textContent = 'Odeslat zprávu →';
+        submitBtn.disabled = false;
+        formNote.textContent = 'Něco se pokazilo. Zkus to pros\xedm znovu.';
+      }
+    });
+  </script>
+</body>
+</html>
